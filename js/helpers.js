@@ -6,13 +6,10 @@ function update(){
     frames++
     ramenSpeed()
     generateEvil()
-    generateBarras()
     gameSpeed()
-    // generatePolice()
-    // generateVirus()
     clearCanvas()
     backgroundChange()
-    // board.draw()
+    levelChange()
     checkCollitionVirus()
     checkCollitionNaruto()
     checkCollitionMonster()
@@ -26,6 +23,7 @@ function update(){
     drawMonsters()
     drawPolice()
     drawBarras()
+    drawCuchillo()
     ramenScore()
 }
 
@@ -46,11 +44,11 @@ function generatePolice() {
   //funcion de barras
   function generateBarras(){
     if (frames % 450 === 0){
-      const y = 320
+      const y = 320 
       const x = 800
-      ataques.push(new Barras(x,y+70))
+      ataques.push(new Barras(x, y+70))
     }
-  }
+  } 
 
   function drawBarras(){
     ataques.forEach((barra, i)=>{
@@ -58,6 +56,33 @@ function generatePolice() {
     })
   }
   //hasta aqui
+
+  //funcion de cuchillos
+  function generateCuchillo(){
+    if (frames % 400 === 0) {
+        const setX = 800
+        const minY = 250
+        const maxY = 400
+        const randomY = Math.floor(Math.random()*(maxY-minY)+minY)
+        cuchillos.push(new Cuchillo(setX,randomY))
+    }
+  }
+
+  function generateCuchillo2(){
+    if (frames % 700 === 0) {
+      const setX = 800
+      const minY = 100
+      const maxY = 250
+      const randomY = Math.floor(Math.random()*(maxY-minY)+minY)
+      cuchillos.push(new Cuchillo(setX,randomY))
+    }
+  }
+
+  function drawCuchillo(){
+    cuchillos.forEach((c, i)=>{
+      c.draw();
+    })
+  }
 
   // dibujar obstaculos
   function drawPolice() { 
@@ -84,8 +109,8 @@ function generateVirus() {
 
   // Función para generar monsters
 function generateMonsters() {
-    if (frames % 400 === 0) {
-      const setY = 230
+    if (frames % 600 === 0) {
+      const setY = 260
       const setX = 800
       monsters.push(new Monster(setX,setY))
     }
@@ -100,12 +125,14 @@ function generateMonsters() {
 
   function generateEvil(){
     if(score < 5 ){
+      generateVirus()
+     }else if (score < 15){
       generatePolice()
-      // generateVirus()
-     }else if (score >= 5){
+      generateBarras()
+     }else if(score >= 15){
        generateMonsters()
-     }else if(score>=15){
-       generatePolice()
+       generateCuchillo()
+       generateCuchillo2()
      }
   }
 
@@ -139,6 +166,7 @@ function generateRamenLevel3(){
       ingredientes.push(new Ramen(setX,randomY))
     }
 }
+
 //función para llamar los niveles
   function ramenSpeed(){
       if(score < 5){
@@ -184,6 +212,11 @@ function checkCollition(){
     })
     ataques.forEach(barra=>{
       if(taro.touch(barra)){
+        gameOver();
+      }
+    })
+    cuchillos.forEach(c=>{
+      if(taro.touch(c)){
         gameOver();
       }
     })
@@ -260,14 +293,36 @@ function drawShoots() {
     shoots.forEach(shoot => shoot.draw());
   }
 
-
+// cambio de velocidad por nivel
   function gameSpeed(){
       if(score < 5) {
-        generalSpeed = 1.5
+        generalSpeed = 1.2
       }else if(score < 15){
-        frames +=10
+        generalSpeed = 1.5
       }else if(score >= 15){
-        frames += 20
+        generalSpeed = 2
+      }
+  }
+
+  // Cambio de texto x Nivel
+  function levelChange(){
+    if(score < 5 ){
+        $context.font="32px Arial"
+        $context.fillStyle="white"
+        $context.fillText("Level 1", 660,45)
+      }else if(score < 15){
+        $context.font="32px Arial"
+        $context.fillStyle="white"
+        $context.fillText("Level 2", 660,45)
+      }else if(score < 30){
+        $context.font="32px Arial"
+        $context.fillStyle="white"
+        $context.fillText("Level 3", 660,45)
+      }else if(score === 30){
+        clearInterval(intervalId)
+        $context.font="32px Arial"
+        $context.fillStyle="white"
+        $context.fillText("You Won", 660,45)
       }
   }
 
@@ -293,3 +348,4 @@ function drawShoots() {
           drawLevel3()
         }
   }
+

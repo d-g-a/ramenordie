@@ -12,5 +12,6 @@ let score = 0
 let platforms = []
 const shoots = []
 const ataques = []
+const cuchillos=[]
 let generalSpeed = 1
 

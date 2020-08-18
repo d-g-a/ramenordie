@@ -89,7 +89,7 @@ class Character{
           this.y = y
           this.width = 135
           this.height = 160
-          this.hp = 5;
+          this.hp = 4;
           this.img= new Image()
           this.img.src = "../images/policecat.png"          
       }
@@ -108,12 +108,12 @@ class Character{
         this.y = y
         this.width = 85
         this.height = 85
-        this.hp = 0;
+        this.hp = 2;
         this.img= new Image()
         this.img.src = "../images/covid.png"          
     }
     draw() {
-        this.x--
+        this.x = this.x-1*generalSpeed 
         $context.drawImage(this.img, this.x, this.y, this.width, this.height)
     }
     damage(){
@@ -125,14 +125,14 @@ class Monster{
     constructor(x,y) {
         this.x = x
         this.y = y
-        this.width = 130
-        this.height = 240
-        this.hp = 4 ;
+        this.width = 120
+        this.height = 220
+        this.hp = 8 ;
         this.img= new Image()
         this.img.src = "../images/gatomalo.png"          
     }
     draw() {
-        this.x--
+        this.x = this.x-1*generalSpeed 
         $context.drawImage(this.img, this.x, this.y, this.width, this.height)
     }
     damage(){
@@ -144,10 +144,10 @@ class Monster{
       constructor(x,y) {
         this.x = x 
         this.y = y
-        this.width = 50
-        this.height = 50
+        this.width = 70
+        this.height = 70
         this.img = new Image()
-        this.img.src = "../images/Ramen.png"
+        this.img.src = "../images/ramen.png"
      }
      draw() {
          this.x--
@@ -180,13 +180,26 @@ class Barras{
   constructor(x,y){
     this.x=x
     this.y=y
-    this.width=20
-    this.height=20
+    this.width=47
+    this.height=25
     this.img=new Image();
-    this.img.src="../images/naruto.png"
+    this.img.src="../images/barraa.png"
   }
   draw(){
-    this.x -=5
+    this.x -=5  
     $context.drawImage(this.img, this.x, this.y, this.width, this.height)
+  }
+}
+
+class Cuchillo extends Barras{
+  constructor(x,y){
+    super(x,y)
+    this.width = 90
+    this.height = 20
+    this.img=new Image()
+    this.img.src= "../images/cuchillo.png"
+    this.img.onload = () => {
+        this.draw
+    }
   }
 }
