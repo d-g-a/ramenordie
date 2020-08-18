@@ -10,18 +10,18 @@ document.addEventListener("keydown", event => {
     break;
     case 39:
       naruto.draw();
-      naruto.newPos();
+      naruto.newPos()
     break;
     default:
       break;
   }
 })
 
-document.addEventListener("keyup",event=>{
-  switch(event.keyCode){
-    case 39:
-      naruto.draw();
-      naruto.newPos();
-    break;
-  }
-})
+// document.addEventListener("keyup",event=>{
+//   switch(event.keyCode){
+//     case 39:
+//       naruto.draw();
+//       naruto.newPos();
+//     break;
+//   }
+// })

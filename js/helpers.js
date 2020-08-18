@@ -9,6 +9,7 @@ function update(){
     clearCanvas()
     board.draw()
     checkCollition()
+    ramenScore()
     printScore()
     taro.newPos()
     taro.draw()
@@ -64,7 +65,6 @@ function gameOver(){
     $context.fillText("GAME OVER", 225,180)
 }
 
-//check touch function of taro
 function checkCollition(){
     obstacles.forEach(ob=>{
         if(taro.touch(ob)){
@@ -77,22 +77,22 @@ function checkCollition(){
 function checkNarutoCollition(){
   obstacles.forEach(ob=>{
     if(naruto.touch(ob)){
-      ob.style.visibility="hidden";
+      // ob.style.visibility="hidden";
     }
   })
 }
 
 //print score ()
 function ramenScore(){
-  ingredientes.forEach(ingre => {
-    if(taro.touch(ingre)){
-      score ++
-      ingre.style.visibility="hidden"
-    }else{
-      score += 0
-    }
-  })
-}
+  ingredientes.forEach(ramen=>{
+   if(taro.touch(ramen)){
+     score ++;
+   }else{
+     score +=0;
+   }
+  }
+)}
+
 function printScore(){
   $context.font="32px Arial"
   $context.fillStyle="black"

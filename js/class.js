@@ -5,7 +5,7 @@ class Background {
         this.width=$canvas.width;
         this.height=$canvas.height;
         this.img=new Image();
-        this.img.src="https://i.pinimg.com/564x/ce/76/d6/ce76d624606c4c6ba701350d3d4742cf.jpg"
+        this.img.src="https://i.pinimg.com/564x/20/88/dd/2088dddd12a262948f5a83ce19343c4d.jpg"
         this.img.onload = () => {
             this.draw()
         }
@@ -27,11 +27,10 @@ class Character{
       this.y=y
       this.width=100
       this.height=150
-      this.velY=0
       this.jumping=false
       this.jumpStrength = 200
       this.img=new Image()
-      this.img.src="../images/catskating.png"
+      this.img.src="../images/skatercat.png"
       this.img.onload = () => {
         this.draw()
       }
@@ -39,19 +38,21 @@ class Character{
     draw(){
       $context.drawImage(this.img, this.x, this.y, this.width, this.height)
     }
-    jump(){
-      if(!this.jumping){
+    jump(){ 
+      if(!this.jumping){    
         this.y  -= this.jumpStrength 
-         this.jumping=true
+        this.velY=-25
        }else if(this.jumping){
-        this.y  -= this.jumpStrength 
-        this.jumping=false
+        this.y  += this.jumpStrength 
+        if(this.y>$canvas.height){
+          this.jumping=false
+        }
        }
     }
     newPos(){
       if(this.y < 330){
-        // this.x +=0.6
-        this.y +=gravity + 3
+        this.x +=  0.3
+        this.y +=gravity 
       }
     }
     touch(obstacle){
@@ -71,7 +72,7 @@ class Character{
           this.width = 115
           this.height = 140
           this.img= new Image()
-          this.img.src = "../images/policia.png"          
+          this.img.src = "../images/policecat.png"          
       }
       draw() {
           this.x--
