@@ -6,11 +6,13 @@ function update(){
     frames++
     ramenSpeed()
     generateEvil()
-    // gameSpeed()
+    generateBarras()
+    gameSpeed()
     // generatePolice()
     // generateVirus()
     clearCanvas()
-    board.draw()
+    backgroundChange()
+    // board.draw()
     checkCollitionVirus()
     checkCollitionNaruto()
     checkCollitionMonster()
@@ -23,6 +25,7 @@ function update(){
     drawVirus()
     drawMonsters()
     drawPolice()
+    drawBarras()
     ramenScore()
 }
 
@@ -34,20 +37,34 @@ function clearCanvas(){
 // Función para generar obstáculos 
 function generatePolice() {
     if (frames % 450 === 0) {
-      const setY = 340
+      const setY = 320
       const setX = 800
       obstacles.push(new Policia(setX,setY))
     }
   }
+ 
+  //funcion de barras
+  function generateBarras(){
+    if (frames % 450 === 0){
+      const y = 320
+      const x = 800
+      ataques.push(new Barras(x,y+70))
+    }
+  }
+
+  function drawBarras(){
+    ataques.forEach((barra, i)=>{
+      barra.draw();
+    })
+  }
+  //hasta aqui
 
   // dibujar obstaculos
-  function drawPolice() {
-      if(score >= 10){
+  function drawPolice() { 
     obstacles.forEach((obstacle, i) => {
       obstacle.draw()
     })
   }
-}
   
   // Función para generar covid
 function generateVirus() {
@@ -65,10 +82,10 @@ function generateVirus() {
     })
   }
 
-   // Función para generar monsters
+  // Función para generar monsters
 function generateMonsters() {
     if (frames % 400 === 0) {
-      const setY = 350
+      const setY = 230
       const setX = 800
       monsters.push(new Monster(setX,setY))
     }
@@ -81,11 +98,11 @@ function generateMonsters() {
     })
   }
 
-
   function generateEvil(){
     if(score < 5 ){
-        generateVirus()
-     }else if (score >= 4){
+      generatePolice()
+      // generateVirus()
+     }else if (score >= 5){
        generateMonsters()
      }else if(score>=15){
        generatePolice()
@@ -133,7 +150,6 @@ function generateRamenLevel3(){
       }
   }
 
-
 // Dibuar ingredientes
   function drawRamen() {
       ingredientes.forEach((ramen, i) => {
@@ -163,6 +179,11 @@ function checkCollition(){
     })
     monsters.forEach(mou=>{
       if(taro.touch(mou)){
+        gameOver();
+      }
+    })
+    ataques.forEach(barra=>{
+      if(taro.touch(barra)){
         gameOver();
       }
     })
@@ -231,7 +252,7 @@ function ramenScore(){
 function printScore(){
   $context.font="32px Arial"
   $context.fillStyle="black"
-  $context.fillText(`Score : ${score}`, 20,30)
+  $context.fillText(`Score : ${score}`, 20, 40)
 }
 
 // Disparos
@@ -241,18 +262,34 @@ function drawShoots() {
 
 
   function gameSpeed(){
-      if(score < 10){
-        intervalId = setInterval(update, 1000/150)
-      }else if(score >= 10){
-        intervalId = setInterval(update, 1000/200)
-      }else if(score >= 20){
-        intervalId = setInterval(update, 1000/250)
+      if(score < 5) {
+        generalSpeed = 1.5
+      }else if(score < 15){
+        frames +=10
+      }else if(score >= 15){
+        frames += 20
       }
   }
 
   //Cambio de Fondo x Nivel
+    function drawLevel1(){
+        board.draw()
+    }
+
+    function drawLevel2(){
+        board2.draw()
+    }
+
+    function drawLevel3(){
+        board3.draw()
+    }
+
   function backgroundChange(){
-      if(score< 5)(
-          board.dra
-      )
+      if(score < 5) {
+          drawLevel1()
+        }else if(score < 15){
+          drawLevel2()
+        }else if(score >= 15){
+          drawLevel3()
+        }
   }

@@ -11,8 +11,8 @@ class Background {
         }
     }
 
-    draw(){
-        this.x--
+    draw(){ 
+        this.x = this.x-1*generalSpeed 
         if(this.x <-$canvas.width){
             this.x=0;
         }
@@ -22,8 +22,25 @@ class Background {
 }
 
 class Level2 extends Background {
-    constructor()
-    super()
+    constructor(x,y,width,height){
+    super(x,y,width,height)
+    this.img=new Image()
+    this.img.src= "https://pressstart.vip/images/uploads/assets/snowymountains.png"
+    this.img.onload = () => {
+        this.draw
+    }
+  }
+}
+
+class Level3 extends Background {
+    constructor(x,y,width,height){
+    super(x,y,width,height)
+    this.img=new Image()
+    this.img.src= "https://pressstart.vip/images/uploads/assets/graveyard.png"
+    this.img.onload = () => {
+        this.draw
+    }
+  }
 }
 
 class Character{
@@ -70,14 +87,14 @@ class Character{
       constructor(x,y) {
           this.x = x
           this.y = y
-          this.width = 115
-          this.height = 140
+          this.width = 135
+          this.height = 160
           this.hp = 5;
           this.img= new Image()
           this.img.src = "../images/policecat.png"          
       }
       draw() {
-          this.x--
+          this.x = this.x-1*generalSpeed 
           $context.drawImage(this.img, this.x, this.y, this.width, this.height)
       }
       damage(){
@@ -108,11 +125,11 @@ class Monster{
     constructor(x,y) {
         this.x = x
         this.y = y
-        this.width = 200
-        this.height = 200
-        this.hp = 4;
+        this.width = 130
+        this.height = 240
+        this.hp = 4 ;
         this.img= new Image()
-        this.img.src = "../images/monster.png"          
+        this.img.src = "../images/gatomalo.png"          
     }
     draw() {
         this.x--
@@ -169,7 +186,7 @@ class Barras{
     this.img.src="../images/naruto.png"
   }
   draw(){
-    this.x -=4;
+    this.x -=5
     $context.drawImage(this.img, this.x, this.y, this.width, this.height)
   }
 }

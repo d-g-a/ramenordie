@@ -11,5 +11,6 @@ const ingredientes = []
 let score = 0 
 let platforms = []
 const shoots = []
-const barrasPolicia=[]
+const ataques = []
+let generalSpeed = 1
 

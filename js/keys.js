@@ -2,7 +2,7 @@ document.addEventListener("keydown", event => {
   switch(event.keyCode){
     case 32:
       if(!intervalId){
-        gameSpeed()
+        intervalId = setInterval(update, 1000/150)
       }
     break;  
     case 38:
