@@ -4,28 +4,36 @@
 
 function update(){
     frames++
-    generateRamen()
-    generatePolice()
+    ramenSpeed()
+    generateEvil()
+    // gameSpeed()
+    // generatePolice()
+    // generateVirus()
     clearCanvas()
     board.draw()
+    checkCollitionVirus()
+    checkCollitionNaruto()
+    checkCollitionMonster()
     checkCollition()
-    ramenScore()
     printScore()
     taro.newPos()
     taro.draw()
+    drawShoots()
     drawRamen()
+    drawVirus()
+    drawMonsters()
     drawPolice()
+    ramenScore()
 }
 
 // Función para borrar el canvas
-
 function clearCanvas(){
     $context.clearRect(0,0,$canvas.width,$canvas.height)
 }
 
 // Función para generar obstáculos 
 function generatePolice() {
-    if (frames % 500 === 0) {
+    if (frames % 450 === 0) {
       const setY = 340
       const setX = 800
       obstacles.push(new Policia(setX,setY))
@@ -34,12 +42,57 @@ function generatePolice() {
 
   // dibujar obstaculos
   function drawPolice() {
+      if(score >= 10){
     obstacles.forEach((obstacle, i) => {
       obstacle.draw()
     })
   }
+}
+  
+  // Función para generar covid
+function generateVirus() {
+    if (frames % 400 === 0) {
+      const setY = 350
+      const setX = 800
+      covid.push(new Covid(setX,setY))
+    }
+  }
 
-  // Función para generar ingredientes de ramen
+  // dibujar covid
+  function drawVirus() {
+    covid.forEach((virus, i) => {
+      virus.draw()
+    })
+  }
+
+   // Función para generar monsters
+function generateMonsters() {
+    if (frames % 400 === 0) {
+      const setY = 350
+      const setX = 800
+      monsters.push(new Monster(setX,setY))
+    }
+  }
+
+  // dibujar monsters
+  function drawMonsters() {
+    monsters.forEach((monster, i) => {
+      monster.draw()
+    })
+  }
+
+
+  function generateEvil(){
+    if(score < 5 ){
+        generateVirus()
+     }else if (score >= 4){
+       generateMonsters()
+     }else if(score>=15){
+       generatePolice()
+     }
+  }
+
+  // Función para generar ingredientes de ramen por niveles
   function generateRamen(){
       if (frames % 400 === 0) {
         const setX = 800
@@ -49,7 +102,38 @@ function generatePolice() {
         ingredientes.push(new Ramen(setX,randomY))
       }
   }
-      
+
+  function generateRamenLevel2(){
+    if (frames % 800 === 0) {
+      const setX = 800
+      const minY = 100
+      const maxY = 200
+      const randomY = Math.floor(Math.random()*(maxY-minY)+minY)
+      ingredientes.push(new Ramen(setX,randomY))
+    }
+}
+
+function generateRamenLevel3(){
+    if (frames % 1200 === 0) {
+      const setX = 800
+      const minY = 100
+      const maxY = 200
+      const randomY = Math.floor(Math.random()*(maxY-minY)+minY)
+      ingredientes.push(new Ramen(setX,randomY))
+    }
+}
+//función para llamar los niveles
+  function ramenSpeed(){
+      if(score < 5){
+         generateRamen()
+      }else if (score >= 5){
+        generateRamenLevel2()
+      }else if(score>=15){
+        generateRamenLevel3()
+      }
+  }
+
+
 // Dibuar ingredientes
   function drawRamen() {
       ingredientes.forEach((ramen, i) => {
@@ -65,37 +149,110 @@ function gameOver(){
     $context.fillText("GAME OVER", 225,180)
 }
 
+//Función de colición
 function checkCollition(){
     obstacles.forEach(ob=>{
         if(taro.touch(ob)){
             gameOver()
         }
     })
+    covid .forEach(co=>{
+      if(taro.touch(co)){
+        gameOver();
+      }
+    })
+    monsters.forEach(mou=>{
+      if(taro.touch(mou)){
+        gameOver();
+      }
+    })
 }
 
-//check touch function of naruto
-function checkNarutoCollition(){
-  obstacles.forEach(ob=>{
-    if(naruto.touch(ob)){
-      // ob.style.visibility="hidden";
-    }
-  })
+//Función collition Naruto
+function checkCollitionNaruto(){
+    shoots.forEach((ob,i)=>{
+         obstacles.forEach((police, index)=>{
+             if(ob.touch(police)&& police.hp>0){
+                 shoots.splice(i,1)
+                 police.damage()   
+             }
+             else if (ob.touch(police)&& police.hp===0){
+                obstacles.splice(index,1)
+                shoots.splice(i,1)
+             }
+         })  
+    })
+}
+
+
+//Funcion collition Covid
+function checkCollitionVirus(){
+    shoots.forEach((ob,i)=>{
+         covid.forEach((virus, index)=>{
+             if(ob.touch(virus)&& virus.hp>0){
+                 shoots.splice(i,1)
+                 virus.damage()   
+             }
+             else if (ob.touch(virus)&& virus.hp===0){
+                covid.splice(index,1)
+                shoots.splice(i,1)
+             }
+         })  
+    })
+}
+
+//Funcion collition Monster
+function checkCollitionMonster(){
+    shoots.forEach((ob,i)=>{
+         monsters.forEach((monster, index)=>{
+             if(ob.touch(monster)&& monster.hp>0){
+                 shoots.splice(i,1)
+                 monster.damage()   
+             }
+             else if (ob.touch(monster)&& monster.hp===0){
+                monsters.splice(index,1)
+                shoots.splice(i,1)
+             }
+         })  
+    })
 }
 
 //print score ()
 function ramenScore(){
-  ingredientes.forEach(ramen=>{
+  ingredientes.forEach((ramen,index)=>{
    if(taro.touch(ramen)){
+     ingredientes.splice(index,1)
      score ++;
-   }else{
-     score +=0;
    }
   }
 )}
 
+//print score ()
 function printScore(){
   $context.font="32px Arial"
   $context.fillStyle="black"
   $context.fillText(`Score : ${score}`, 20,30)
 }
 
+// Disparos
+function drawShoots() {
+    shoots.forEach(shoot => shoot.draw());
+  }
+
+
+  function gameSpeed(){
+      if(score < 10){
+        intervalId = setInterval(update, 1000/150)
+      }else if(score >= 10){
+        intervalId = setInterval(update, 1000/200)
+      }else if(score >= 20){
+        intervalId = setInterval(update, 1000/250)
+      }
+  }
+
+  //Cambio de Fondo x Nivel
+  function backgroundChange(){
+      if(score< 5)(
+          board.dra
+      )
+  }

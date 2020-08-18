@@ -5,7 +5,7 @@ class Background {
         this.width=$canvas.width;
         this.height=$canvas.height;
         this.img=new Image();
-        this.img.src="https://i.pinimg.com/564x/20/88/dd/2088dddd12a262948f5a83ce19343c4d.jpg"
+        this.img.src="https://i.pinimg.com/564x/47/1a/08/471a08fc76dc51e61d8cc160a70f3448.jpg"
         this.img.onload = () => {
             this.draw()
         }
@@ -21,6 +21,11 @@ class Background {
     }
 }
 
+class Level2 extends Background {
+    constructor()
+    super()
+}
+
 class Character{
     constructor(x, y) {
       this.x=x
@@ -28,7 +33,7 @@ class Character{
       this.width=100
       this.height=150
       this.jumping=false
-      this.jumpStrength = 200
+      this.jumpStrength = 300
       this.img=new Image()
       this.img.src="../images/skatercat.png"
       this.img.onload = () => {
@@ -41,17 +46,13 @@ class Character{
     jump(){ 
       if(!this.jumping){    
         this.y  -= this.jumpStrength 
-        this.velY=-25
        }else if(this.jumping){
         this.y  += this.jumpStrength 
-        if(this.y>$canvas.height){
-          this.jumping=false
-        }
+        this.jumping=false
        }
     }
     newPos(){
       if(this.y < 330){
-        this.x +=  0.3
         this.y +=gravity 
       }
     }
@@ -71,6 +72,7 @@ class Character{
           this.y = y
           this.width = 115
           this.height = 140
+          this.hp = 5;
           this.img= new Image()
           this.img.src = "../images/policecat.png"          
       }
@@ -78,8 +80,49 @@ class Character{
           this.x--
           $context.drawImage(this.img, this.x, this.y, this.width, this.height)
       }
+      damage(){
+        this.hp--
+      }
   }
- 
+
+  class Covid{
+    constructor(x,y) {
+        this.x = x
+        this.y = y
+        this.width = 85
+        this.height = 85
+        this.hp = 0;
+        this.img= new Image()
+        this.img.src = "../images/covid.png"          
+    }
+    draw() {
+        this.x--
+        $context.drawImage(this.img, this.x, this.y, this.width, this.height)
+    }
+    damage(){
+      this.hp--
+    }
+}
+
+class Monster{
+    constructor(x,y) {
+        this.x = x
+        this.y = y
+        this.width = 200
+        this.height = 200
+        this.hp = 4;
+        this.img= new Image()
+        this.img.src = "../images/monster.png"          
+    }
+    draw() {
+        this.x--
+        $context.drawImage(this.img, this.x, this.y, this.width, this.height)
+    }
+    damage(){
+      this.hp--
+    }
+}
+  
   class Ramen {
       constructor(x,y) {
         this.x = x 
@@ -105,17 +148,28 @@ class Arma{
     this.img.src="../images/naruto.png"
   }
   draw(){
+    this.x += 4;
     $context.drawImage(this.img, this.x, this.y, this.width, this.height)
   }
-  newPos(){
-    this.x +=10
-  }
   touch(obstacle){
-    return(
-      this.x < obstacle.x + obstacle.width&&
-      this.x+this.width > obstacle.x &&
-      this.y < obstacle.y + obstacle.height &&
-      this.y + this.height > obstacle.y
-    )
+    return  (this.x < obstacle.x + obstacle.width) && 
+            (this.x + this.width > obstacle.x) && 
+            (this.y < obstacle.y + obstacle.height) && 
+            (this.y + this.height > obstacle.y)
+  }
+}
+
+class Barras{
+  constructor(x,y){
+    this.x=x
+    this.y=y
+    this.width=20
+    this.height=20
+    this.img=new Image();
+    this.img.src="../images/naruto.png"
+  }
+  draw(){
+    this.x -=4;
+    $context.drawImage(this.img, this.x, this.y, this.width, this.height)
   }
 }

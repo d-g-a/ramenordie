@@ -2,26 +2,16 @@ document.addEventListener("keydown", event => {
   switch(event.keyCode){
     case 32:
       if(!intervalId){
-        intervalId = setInterval(update, 1000/100)
+        gameSpeed()
       }
-    break;
+    break;  
     case 38:
       taro.jump();
     break;
     case 39:
-      naruto.draw();
-      naruto.newPos()
+        shoots.push(new Arma(taro.x+50, taro.y+50));
     break;
     default:
       break;
   }
 })
-
-// document.addEventListener("keyup",event=>{
-//   switch(event.keyCode){
-//     case 39:
-//       naruto.draw();
-//       naruto.newPos();
-//     break;
-//   }
-// })
