@@ -7,12 +7,35 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>RAMEN OR DIE</h1>
-    <button>START</button>
+    <main>
+        <h1>RAMEN OR DIE</h1>
+        <div class="btns">
+            <button class="start">PLAY</button>
+            <button class="creditbtn">CREDITS</button>
+        </div>
+    </main>
 
+    <!-- <p>Press space for start</p> -->
+    <div class="canvas invisible">
+        <h2>RAMEN OR DIE</h2>
+        <button class="gameBtn"></button>
+        <button class="gameBtn"></button>
+        <button class="gameBtn"></button>
+        <canvas width="800" height="500" id="my-canvas" style="border:1px solid red"></canvas>
+    </div>
 
-    <p>Press space for start</p>
-    <canvas width="800" height="500" id="my-canvas" style="border:1px solid red"></canvas>
+    <div class="credit invisible">
+        <h2>RAMEN OR DIE</h2>
+        <div class="credit-container">
+            <p>Designed and programmed by<br>Mai Yamawaki & Diego Guerrero</p>
+            
+            <p>llustrations by<br>Mai Yamawaki</p>
+
+            <p>Advisors <br>Joss Correa & Jorge Martínez<p>
+            <p>Done in</p>     
+        </div>
+        <button class="back">BACK</button>
+    </div>
 
     <script type="text/javascript" src="/js/canvas.js"></script>
     <script type="text/javascript" src="/js/class.js"></script>

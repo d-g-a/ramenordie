@@ -1,3 +1,7 @@
+*{
+    margin:0;
+}
+
 body {
     font-family: sans-serif;
     display: flex;
@@ -6,3 +10,82 @@ body {
     align-items: center;
 }
 
+/*class visible*/
+.visible{
+    display: block;
+}
+
+/*invisible*/
+.invisible{
+    display: none;
+}
+
+/*main page*/
+main{
+    height: 70vh;
+    padding:15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+h1{
+    font-size: 6rem;
+}
+
+button{
+    padding:20px 25px;
+    font-size:1.5rem;
+    background-color: pink;
+    border-radius: 10px;
+    border:none;
+    color:white;
+    justify-self: center;
+    width:250px;
+    margin:0 auto;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/*start-btn*/
+.start,
+.back{
+    width:250px;
+    margin-top: 4vh;
+}
+
+/*credit*/
+.credit{
+  width:60vw;
+  height: 70vh;
+  padding:30px;
+  text-align:center;
+  margin:2vh  0;
+}
+
+.credit-container{ 
+  background-color: red;
+  padding:2rem 3rem
+}
+
+h2{
+    font-size:3rem;
+    margin-bottom: 3vh;
+}
+
+p{
+    font-size:1.5rem;
+    margin-bottom: 2rem;
+}
+
+
+/*canvas*/
+.canvas{
+    margin:2vh;
+    text-align: center;
+}
+
+.gameBtn{
+    display: inline-block;
+}
