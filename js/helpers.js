@@ -189,7 +189,7 @@ function gameOver(){
     clearInterval(intervalId)
     themeSong.pause()
     $context.font="64px Helvetica"
-    $context.fillStyle="#FF3939"
+    $context.fillStyle= "#FF3939"
     $context.fillText("GAME OVER", 217,180)
 }
 
@@ -303,7 +303,7 @@ function ramenScore(){
 //print score ()
 function printScore(){
   $context.font="32px Helvetica"
-  $context.fillStyle="white"
+  $context.fillStyle="#FF3939"
   $context.fillText(`Score: ${score}`, 20, 40)
 }
 
