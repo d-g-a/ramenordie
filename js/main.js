@@ -7,6 +7,7 @@ const virus = new Covid()
 const monster = new Monster()
 const ramen = new Ramen()
 const naruto = new Arma()
+const themeSong = new Music()
 
 
     

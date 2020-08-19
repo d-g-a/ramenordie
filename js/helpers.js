@@ -6,13 +6,14 @@ function update(){
     frames++
     ramenSpeed()
     generateEvil()
-    gameSpeed()
+    // gameSpeed()
     clearCanvas()
     backgroundChange()
     levelChange()
     checkCollitionVirus()
     checkCollitionNaruto()
     checkCollitionMonster()
+    checkCollitionCuchillo()
     checkCollition()
     printScore()
     taro.newPos()
@@ -61,8 +62,8 @@ function generatePolice() {
   function generateCuchillo(){
     if (frames % 400 === 0) {
         const setX = 800
-        const minY = 250
-        const maxY = 400
+        const minY = 100
+        const maxY = 250
         const randomY = Math.floor(Math.random()*(maxY-minY)+minY)
         cuchillos.push(new Cuchillo(setX,randomY))
     }
@@ -71,10 +72,8 @@ function generatePolice() {
   function generateCuchillo2(){
     if (frames % 700 === 0) {
       const setX = 800
-      const minY = 100
-      const maxY = 250
-      const randomY = Math.floor(Math.random()*(maxY-minY)+minY)
-      cuchillos.push(new Cuchillo(setX,randomY))
+      const y = 380
+      cuchillos.push(new Cuchillo(setX,y))
     }
   }
 
@@ -188,8 +187,9 @@ function generateRamenLevel3(){
 // Game-Over
 function gameOver(){
     clearInterval(intervalId)
-    $context.font="62px Arial"
-    $context.fillStyle="red"
+    themeSong.pause()
+    $context.font="64px Helvetica"
+    $context.fillStyle="#FF3939"
     $context.fillText("GAME OVER", 217,180)
 }
 
@@ -279,6 +279,17 @@ function checkCollitionMonster(){
     })
 }
 
+function checkCollitionCuchillo(){
+  shoots.forEach((ob,i)=>{
+    cuchillos.forEach((c, index)=>{
+           if(ob.touch(c)){
+               shoots.splice(i,1)
+               cuchillos.splice(index,1)   
+           }
+       })  
+  })
+}
+
 //print score ()
 function ramenScore(){
   ingredientes.forEach((ramen,index)=>{
@@ -302,7 +313,7 @@ function drawShoots() {
   }
 
 // cambio de velocidad por nivel
-  function gameSpeed(){
+  function fameSpeed(){
       if(score < 5) {
         generalSpeed = 1.2
       }else if(score < 15){
@@ -328,9 +339,9 @@ function drawShoots() {
         $context.fillText("Level 3", 675,45)
       }else if(score === 30){
         clearInterval(intervalId)
-        $context.font="32px Helvetica"
-        $context.fillStyle="white"
-        $context.fillText("You Won", 675,45)
+        $context.font="64px Helvetica"
+        $context.fillStyle="#0047FF"
+        $context.fillText("You Won", 350,220)
       }
   }
 
@@ -357,3 +368,9 @@ function drawShoots() {
         }
   }
 
+
+  //función de audio
+
+  function playAudio(){
+    themeSong.play();
+  }

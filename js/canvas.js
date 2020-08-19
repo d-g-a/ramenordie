@@ -2,8 +2,9 @@ const $canvas = document.querySelector('canvas')
 const $context = $canvas.getContext('2d')
 const $button=document.querySelector("button")
 
-const gravity = 4
+const gravity = 3.50
 let intervalId, frames = 0
+let keys=[]
 const obstacles = []
 const covid = []
 const monsters = []

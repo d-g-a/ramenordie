@@ -3,6 +3,7 @@ document.addEventListener("keydown", event => {
     case 32:
       if(!intervalId){
         intervalId = setInterval(update, 1000/150)
+        playAudio()
       }
     break;  
     case 38:
@@ -11,17 +12,12 @@ document.addEventListener("keydown", event => {
     case 39:
         shoots.push(new Arma(taro.x+50, taro.y+50));
     break;
-    // case 13:
-    //     reset();
-    // break;
-    // case 32:
-    //     if(!intervalId){
-    //       intervalId = setInterval(update, 1000/150)
-    //     }
-    // break; 
     default:
     break;
   }
 })
 
+document.addEventListener("keyup",event=>{
+ keys[event.keyCode] = false
+})
 
