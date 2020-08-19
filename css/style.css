@@ -152,7 +152,7 @@ p{
 
 /*canvas*/
 .canvas{
-    padding: 120px 350px;
+    padding: 50px 350px 50px 350px;
     text-align: center;
     height: 100vh;
 }
