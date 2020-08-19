@@ -6,3 +6,7 @@ body {
     align-items: center;
 }
 
+
+canvas{
+    display: none;
+}
