@@ -6,7 +6,7 @@ function update(){
     frames++
     ramenSpeed()
     generateEvil()
-    // gameSpeed()
+    gameSpeed()
     clearCanvas()
     backgroundChange()
     levelChange()
@@ -313,7 +313,7 @@ function drawShoots() {
   }
 
 // cambio de velocidad por nivel
-  function fameSpeed(){
+  function gameSpeed(){
       if(score < 5) {
         generalSpeed = 1.2
       }else if(score < 15){

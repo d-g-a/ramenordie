@@ -175,7 +175,7 @@ class Monster{
         this.img.src = "../images/ramen.png"
      }
      draw() {
-         this.x--
+        this.x = this.x-1*generalSpeed 
          $context.drawImage(this.img, this.x, this.y, this.width, this.height)
      }
   }
