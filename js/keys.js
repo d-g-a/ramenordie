@@ -7,11 +7,21 @@ document.addEventListener("keydown", event => {
     break;  
     case 38:
       taro.jump();
-    break;
+    break; 
     case 39:
         shoots.push(new Arma(taro.x+50, taro.y+50));
     break;
+    // case 13:
+    //     reset();
+    // break;
+    // case 32:
+    //     if(!intervalId){
+    //       intervalId = setInterval(update, 1000/150)
+    //     }
+    // break; 
     default:
-      break;
+    break;
   }
 })
+
+

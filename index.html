@@ -7,12 +7,65 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>RAMEN OR DIE</h1>
-    <button>START</button>
+    <!--Intro Page -->
+    <main class="landing-page">
+         <img src="images/ramen-or-die-logo.png" alt="ramen-or-die-logo" class="logo-image">
+        <div class="btns">
+            <button class="start">PLAY</button>
+            <button class="credit-btn">CREDITS</button>
+        </div>
+    </main>
+
+    <!-- <p>Press space for start</p> -->
+    <div class="instruction invisible">
+        <img src="images/ramen-or-die-logo.png" alt="ramen-or-die-logo" class="logo-image-instruction">
+        <div class="instruction-container">
+            <p>After the unfortunate pandemic of 2020, the world 
+               collapsed. Restaurants closed, stores were 
+               sacked and the streets are now ruled by a deadly 
+               virus, crooked police officers, and the mafia.</p>
+
+            <p>However, Taro got the word the last ramen chef 
+                will open his doors for the last time but he needs 
+                your help. You need to collect all the ingredients 
+                for the perfect ramen bowl or die in the process.</p>
+
+            <p><strong>Let’s fight for ramen!</strong></p>
+        </div>
+        <button class="start-game-btn">START GAME</button>
+    </div>
 
 
-    <p>Press space for start</p>
-    <canvas width="800" height="500" id="my-canvas" style="border:1px solid red"></canvas>
+    <!-- Canvas-->
+    <div class="canvas invisible">
+        <div class="logo-game">
+            <img src="images/ramen-or-die-logo.png" alt="ramen-or-die-logo" class="logo-image-canvas">
+        </div>
+        <canvas width="800" height="500" id="my-canvas"></canvas>
+        <div class="about-game">
+            <div class="gameBtn">SPACE BAR TO START</div>
+            <div class="gameBtn">UP ARRORW TO JUMP</div>
+            <div class="gameBtn">RIGHT ARROW TO SHOOT</div>
+            <div class="gameBtn meta">GET 30 RAMEN BOWLS TO WIN</div>
+        </div>
+        <button class="top">BACK</button>
+    </div>
+
+
+    <!-- Credit Section-->
+    <div class="credit invisible">
+        <img src="images/ramen-or-die-logo.png" alt="ramen-or-die-logo" class="logo-image-credits">
+        <div class="credit-container">
+            <p>Designed and programmed by<br>Mai Yamawaki & Diego Guerrero</p>
+            
+            <p>lllustrations by<br>Mai Yamawaki</p>
+
+            <p>Advisors<br>Joss Correa & Jorge Martínez<p>
+            <p><span>Made in</span></p>    
+            <img src="/images/ironhack_red.png" alt="ironhack_red" class="ironhack"> 
+        </div>
+        <button class="back">BACK</button>
+    </div>
 
     <script type="text/javascript" src="/js/canvas.js"></script>
     <script type="text/javascript" src="/js/class.js"></script>

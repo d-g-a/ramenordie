@@ -190,8 +190,16 @@ function gameOver(){
     clearInterval(intervalId)
     $context.font="62px Arial"
     $context.fillStyle="red"
-    $context.fillText("GAME OVER", 225,180)
+    $context.fillText("GAME OVER", 217,180)
 }
+
+//reset
+// function reset(){
+//   frames=0;
+//   intervalId=0;
+//   count=0;
+//   clearInterval(intervalId)
+// }
 
 //Función de colición
 function checkCollition(){
@@ -283,9 +291,9 @@ function ramenScore(){
 
 //print score ()
 function printScore(){
-  $context.font="32px Arial"
-  $context.fillStyle="black"
-  $context.fillText(`Score : ${score}`, 20, 40)
+  $context.font="32px Helvetica"
+  $context.fillStyle="white"
+  $context.fillText(`Score: ${score}`, 20, 40)
 }
 
 // Disparos
@@ -307,22 +315,22 @@ function drawShoots() {
   // Cambio de texto x Nivel
   function levelChange(){
     if(score < 5 ){
-        $context.font="32px Arial"
+        $context.font="32px Helvetica"
         $context.fillStyle="white"
-        $context.fillText("Level 1", 660,45)
+        $context.fillText("Level 1", 675,45)
       }else if(score < 15){
-        $context.font="32px Arial"
+        $context.font="32px Helvetica"
         $context.fillStyle="white"
-        $context.fillText("Level 2", 660,45)
+        $context.fillText("Level 2", 675,45)
       }else if(score < 30){
-        $context.font="32px Arial"
+        $context.font="32px Helvetica"
         $context.fillStyle="white"
-        $context.fillText("Level 3", 660,45)
+        $context.fillText("Level 3", 675,45)
       }else if(score === 30){
         clearInterval(intervalId)
-        $context.font="32px Arial"
+        $context.font="32px Helvetica"
         $context.fillStyle="white"
-        $context.fillText("You Won", 660,45)
+        $context.fillText("You Won", 675,45)
       }
   }
 

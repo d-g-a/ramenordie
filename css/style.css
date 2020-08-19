@@ -1,12 +1,239 @@
+/* Web-font */
+@font-face {
+    font-family: 'frozdotreregular';
+    src: url('frozdotre-webfont.woff2') format('woff2'),
+         url('frozdotre-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Variables  */
+:root {
+    --main-red : #FF3939;
+    --white : #ffffff;
+    --helvetica : Helvetica;
+    --helvetica-light : 300;
+    --frozodotre: 'frozdotreregular';
+}
+
+/* Global */
+*{
+    margin:0;
+}
+
 body {
-    font-family: sans-serif;
+    font-family: var(--helvetica);
+    font-weight: var(--helvetica-light);
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(/images/ramen-or-die-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+p{
+    font-size:24px;
+    line-height: 1.4;
+    margin-bottom: 24px;
+}
+
+/* Landing Page */
+
+.landing-page {
+    margin: 200px;
+    display: flex;
+    text-align: center;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 
-canvas{
+.logo-image {
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+/*class visible*/
+.visible{
+    display: block;
+}
+
+/*invisible*/
+.invisible{
     display: none;
 }
+
+.btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    margin-top: 24px;
+}
+
+.start,
+.credit-btn{
+    font-family: var(--frozodotre);
+    font-size:24px;
+    text-align: center;
+    color:var(--white);
+    background-color: var(--main-red);
+    border-radius: 40px;
+    border:none;
+    width: 200px;
+    height: 50px;
+    margin: 20px;
+}
+
+.credit-btn{
+    padding-top: 3px;
+    font-size: 16px;
+}
+
+.start{
+    padding-top: 6px;
+}
+
+/*Credits Section*/
+.credit{
+  width:50vw;
+  padding:32px;
+  text-align:center;
+}
+
+.credit-container{ 
+  font-family: var(--helvetica);
+  font-weight: var(--helvetica-light);
+  font-size: 16px;
+  line-height: 1.2;
+  background-color: #FFFFFF;
+  color: #FF3939;
+  padding:2em;
+}
+
+.credit-container>p>span{
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.logo-image-credits {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.ironhack {
+    margin-bottom: 20px;
+    padding: 0;
+    width: 10%;
+    height: auto;
+}
+
+
+.back {
+    font-family: var(--frozodotre);
+    font-size:24px;
+    text-align: center;
+    color:var(--white);
+    background-color: var(--main-red);
+    border-radius: 40px;
+    border:none;
+    width: 200px;
+    height: 50px;
+    margin-top: 24px;
+}
+
+
+/*canvas*/
+.canvas{
+    padding: 120px 350px;
+    text-align: center;
+    height: 100vh;
+}
+
+.logo-image-canvas {
+    width: 800px;
+    height: auto;
+    text-align: center;
+    margin-bottom:32px
+}
+
+.about-game{  
+    width: 800px; 
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+   }
+
+
+.gameBtn{
+    font-family: var(--helvetica);
+    font-weight: 400;
+    padding:10px;
+    font-size:12px;
+    background-color:var(--main-red);
+    border-radius:5px;
+    color:var(--white);
+    border-radius:5px;
+    margin-top:24px;
+}
+
+
+.top {
+    font-family: var(--frozodotre);
+    font-size:16px;
+    text-align: center;
+    color:var(--white);
+    background-color: var(--main-red);
+    border-radius: 40px;
+    border:none;
+    width: 120px;
+    height: 32px;
+    margin-top: 48px;
+    padding-top: 3px;
+
+}
+/*Instruction-Container*/
+.instruction{
+    text-align: center;
+    width:50vw;
+    padding:32px;
+}
+
+.logo-image-instruction{
+    width: 100%;
+    height: auto;
+    margin-bottom: 16px;
+}
+
+.instruction-container{
+    background-color: #FFFFFF;
+    color: #FF3939;
+    padding:2em;
+    text-align: left;
+}
+
+.instruction>p {
+    font-size: 32px;
+}
+
+.start-game-btn {
+    font-family: var(--frozodotre);
+    font-size:24px;
+    text-align: center;
+    color:var(--white);
+    background-color: var(--main-red);
+    border-radius: 40px;
+    border:none;
+    width: 400px;
+    height: 50px;
+    margin-top: 24px;
+    padding-top: 6px;
+}
+
