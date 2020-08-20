@@ -12,6 +12,12 @@ document.addEventListener("keydown", event => {
     case 39:
         shoots.push(new Arma(taro.x+50, taro.y+50));
     break;
+    case 13:
+        // reset();
+        if(!intervalId){
+         reset();
+        }
+    break;
     default:
     break;
   }

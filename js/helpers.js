@@ -187,19 +187,31 @@ function generateRamenLevel3(){
 // Game-Over
 function gameOver(){
     clearInterval(intervalId)
-    themeSong.pause()
+    intervalId = null
+    themeSong.stop()
     $context.font="64px Helvetica"
     $context.fillStyle= "#FF3939"
-    $context.fillText("GAME OVER", 217,180)
+    $context.fillText("GAME OVER", 195,180)
 }
 
 //reset
-// function reset(){
-//   frames=0;
-//   intervalId=0;
-//   count=0;
-//   clearInterval(intervalId)
-// }
+function reset(){
+    // location.reload(true)
+    frames=0;
+    score=0;
+    taro.x=50;
+    taro.y=330;
+    obstacles = []
+    covid = []
+    monsters = []
+    ingredientes = []
+    shoots = []
+    ataques = []
+    cuchillos= []
+    generalSpeed = 1
+    intervalId = setInterval(update, 1000/150)
+    playAudio()
+}
 
 //Función de colición
 function checkCollition(){
@@ -337,11 +349,12 @@ function drawShoots() {
         $context.font="32px Helvetica"
         $context.fillStyle="white"
         $context.fillText("Level 3", 675,45)
-      }else if(score === 30){
+      }else if(score === 1){
         clearInterval(intervalId)
-        $context.font="64px Helvetica"
-        $context.fillStyle="#0047FF"
-        $context.fillText("You Won", 350,220)
+        themeSong.pause()
+        $context.font="44px Helvetica"
+        $context.fillStyle="white"
+        $context.fillText("WINNER WINNER RAMEN DINNER", 40,280)
       }
   }
 

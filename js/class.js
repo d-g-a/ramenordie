@@ -58,6 +58,10 @@ class Music{
     pause(){
         this.sound.pause()
     }
+    stop(){
+        this.pause()
+        this.sound.currentTime = 0
+    }
 }
 
 class Character{

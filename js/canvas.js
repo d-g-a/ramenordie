@@ -1,18 +1,18 @@
-const $canvas = document.querySelector('canvas')
+const $canvas = document.querySelector('#my-canvas')
 const $context = $canvas.getContext('2d')
 const $button=document.querySelector("button")
 
 const gravity = 3.50
-let intervalId, frames = 0
+let intervalId
+let frames = 0
 let keys=[]
-const obstacles = []
-const covid = []
-const monsters = []
-const ingredientes = []
+let obstacles = []
+let covid = []
+let monsters = []
+let ingredientes = []
 let score = 0 
-let platforms = []
-const shoots = []
-const ataques = []
-const cuchillos=[]
+let shoots = []
+let ataques = []
+let cuchillos=[]
 let generalSpeed = 1
 

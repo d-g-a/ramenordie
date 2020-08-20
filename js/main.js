@@ -53,3 +53,9 @@ btnStartGame.addEventListener("click",()=>{
 btnTop.addEventListener("click",()=>{
   location.reload();
 })
+
+
+
+
+
+

@@ -11,6 +11,7 @@
 :root {
     --main-red : #FF3939;
     --white : #ffffff;
+    --black : #000000;
     --helvetica : Helvetica;
     --helvetica-light : 300;
     --frozodotre: 'frozdotreregular';
@@ -68,6 +69,9 @@ p{
 .invisible{
     display: none;
 }
+.invisible-mobile{
+    display: none;
+}
 
 .btns{
     display: flex;
@@ -100,6 +104,10 @@ p{
     padding-top: 6px;
 }
 
+.start-game-btn > a {
+    text-decoration: none;
+}
+
 /*Credits Section*/
 .credit{
   width:50vw;
@@ -112,8 +120,8 @@ p{
   font-weight: var(--helvetica-light);
   font-size: 16px;
   line-height: 1.2;
-  background-color: #FFFFFF;
-  color: #FF3939;
+  background-color: var(--white);
+  color: var(--main-red);
   padding:2em;
 }
 
@@ -176,9 +184,10 @@ p{
 .gameBtn{
     font-family: var(--helvetica);
     font-weight: 400;
-    padding:10px;
+    padding:8px;
     font-size:12px;
-    background-color:var(--main-red);
+    background-color:var(--black);
+    border: 2px var(--main-red) solid;
     border-radius:5px;
     color:var(--white);
     border-radius:5px;
@@ -214,8 +223,8 @@ p{
 }
 
 .instruction-container{
-    background-color: #FFFFFF;
-    color: #FF3939;
+    background-color:var(--white);
+    color: var(--main-red);
     padding:2em;
     text-align: left;
 }
@@ -237,4 +246,48 @@ p{
     margin-top: 24px;
     padding-top: 6px;
 }
+
+@media (max-width:1024px){
+
+    body{
+        height: 100vh;
+    }
+
+    .invisible-mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin-bottom: 400px;
+    }
+    
+    .logo-image-mobile {
+        text-align: center;
+        width: 80%;
+        height: auto;
+        margin: 20px;
+    }
+
+    .mobile-p {
+        font-family: var(--helvetica);
+        font-weight: var(--helvetica-light);
+        font-size: 20px;
+        width: 70%;
+        padding: 20px 0;
+        text-align: center;
+        background-color: var(--white);
+        color: var(--main-red);
+    }
+
+    .logo-image{
+        display: none;
+    }
+
+    .btns {
+        display: none;
+    }
+}
+
+
 
