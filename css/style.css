@@ -253,6 +253,10 @@ p{
         height: 100vh;
     }
 
+    .canvas {
+        display: none;
+    }
+
     .invisible-mobile {
         display: flex;
         flex-direction: column;
