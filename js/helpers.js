@@ -13,7 +13,7 @@ function update(){
     checkCollitionVirus()
     checkCollitionNaruto()
     checkCollitionMonster()
-    checkCollitionCuchillo()
+    // checkCollitionCuchillo()
     checkCollition()
     printScore()
     taro.newPos()
@@ -70,7 +70,7 @@ function generatePolice() {
   }
 
   function generateCuchillo2(){
-    if (frames % 700 === 0) {
+    if (frames % 400 === 0) {
       const setX = 800
       const y = 380
       cuchillos.push(new Cuchillo(setX,y))
@@ -130,7 +130,7 @@ function generateMonsters() {
       generateBarras()
      }else if(score >= 15){
        generateMonsters()
-       generateCuchillo()
+    //    generateCuchillo()
        generateCuchillo2()
      }
   }
@@ -302,16 +302,16 @@ function checkCollitionMonster(){
     })
 }
 
-function checkCollitionCuchillo(){
-  shoots.forEach((ob,i)=>{
-    cuchillos.forEach((c, index)=>{
-           if(ob.touch(c)){
-               shoots.splice(i,1)
-               cuchillos.splice(index,1)   
-           }
-       })  
-  })
-}
+// function checkCollitionCuchillo(){
+//   shoots.forEach((ob,i)=>{
+//     cuchillos.forEach((c, index)=>{
+//            if(ob.touch(c)){
+//                shoots.splice(i,1)
+//                cuchillos.splice(index,1)   
+//            }
+//        })  
+//   })
+// }
 
 //print score ()
 function ramenScore(){
