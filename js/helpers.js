@@ -349,7 +349,7 @@ function drawShoots() {
         $context.font="32px Helvetica"
         $context.fillStyle="white"
         $context.fillText("Level 3", 675,45)
-      }else if(score === 1){
+      }else if(score === 30){
         clearInterval(intervalId)
         themeSong.pause()
         $context.font="44px Helvetica"
