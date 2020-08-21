@@ -15,4 +15,5 @@ let shoots = []
 let ataques = []
 let cuchillos=[]
 let generalSpeed = 1
+let finalGame = false
 

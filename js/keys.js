@@ -1,10 +1,10 @@
 document.addEventListener("keydown", event => {
   switch(event.keyCode){
     case 32:
-      if(!intervalId){
-        intervalId = setInterval(update, 1000/150)
-        playAudio()
-      }
+        if(finalGame) return 
+          if(!intervalId){
+            startGame();
+        }
     break;  
     case 38:
       taro.jump();

@@ -184,15 +184,26 @@ function generateRamenLevel3(){
       })
   }
 
+// Start Game
+  function startGame(){
+      if(!intervalId){
+        intervalId = setInterval(update, 1000/150)
+        playAudio()
+      }
+}
+
+
 // Game-Over
 function gameOver(){
     clearInterval(intervalId)
     intervalId = null
+    finalGame = true
     themeSong.stop()
     $context.font="64px Helvetica"
     $context.fillStyle= "#FF3939"
     $context.fillText("GAME OVER", 195,180)
 }
+
 
 //reset
 function reset(){
